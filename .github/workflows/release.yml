@@ -37,9 +37,9 @@ jobs:
         CORE_VER=$(git describe --tags --abbrev=0)
         CORE_VER=${CORE_VER#v}
 
-        # 2. Set GitHub Actions Outputs (for use in other steps)
-        echo "cli_ver=$CLI_VER" >> $GITHUB_OUTPUT
+        # 2. Set GitHub Actions Outputs (for use in other steps
         echo "service_ver=$SERVICE_VER" >> $GITHUB_OUTPUT
+        echo "core_ver=$CORE_VER" >> $GITHUB_OUTPUT
 
         # 3. Print to logs (using the local variables defined above)
         echo "------------------------------------------"
