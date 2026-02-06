@@ -1,0 +1,3 @@
+[submodule "openbq/core"]
+	path = openbq/core
+	url = https://github.com/Open-Source-Biometric-Quality-Framework/bqCore.git
