@@ -18,7 +18,7 @@ jobs:
     name: Get Versions
     runs-on: ubuntu-latest
     outputs:
-      cli_ver: ${{ steps.tags.outputs.cli_ver }}
+      service_ver: ${{ steps.tags.outputs.cli_ver }}
       core_ver: ${{ steps.tags.outputs.core_ver }}
     steps:
     - name: Check out Repository
@@ -31,11 +31,11 @@ jobs:
       id: tags
       run: |
         # 1. Extract version variables
-        SERVICE_VER=${GITHUB_REF#refs/tags/v}
+        SERVICE_VER=${GITHUB_REF#refs/tags/}
 
         cd openbq/core/
         CORE_VER=$(git describe --tags --abbrev=0)
-        CORE_VER=${CORE_VER#v}
+        CORE_VER=${CORE_VER}
 
         # 2. Set GitHub Actions Outputs (for use in other steps
         echo "service_ver=$SERVICE_VER" >> $GITHUB_OUTPUT
