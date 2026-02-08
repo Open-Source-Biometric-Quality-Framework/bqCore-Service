@@ -268,6 +268,7 @@ def main(
         "fingerprint",
         "iris",
         "speech",
+        "voice",
         "filter",
         "report",
         "preprocess",
@@ -277,6 +278,9 @@ def main(
 
     if mode == "fingerprint":
         mode = "finger"
+
+    if mode == "voice":
+        mode = "speech"
 
     if type:
         input_type = type.split(",")
