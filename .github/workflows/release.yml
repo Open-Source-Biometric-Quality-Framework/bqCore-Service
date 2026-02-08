@@ -44,6 +44,7 @@ jobs:
         # 3. Print to logs (using the local variables defined above)
         echo "------------------------------------------"
         echo "Triggering Tag: $GITHUB_REF"
+        echo "Commit Hash: $GITHUB_SHA"
         echo "OpenBQ Core Service Version: $SERVICE_VER"
         echo "OpenBQ Core Engine Version: $CORE_VER"
         echo "------------------------------------------"
