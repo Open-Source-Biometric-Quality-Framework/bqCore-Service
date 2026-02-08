@@ -18,7 +18,7 @@ jobs:
     name: Get Versions
     runs-on: ubuntu-latest
     outputs:
-      service_ver: ${{ steps.tags.outputs.cli_ver }}
+      service_ver: ${{ steps.tags.outputs.service_ver }}
       core_ver: ${{ steps.tags.outputs.core_ver }}
     steps:
     - name: Check out Repository
