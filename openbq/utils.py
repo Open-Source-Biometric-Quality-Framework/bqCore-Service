@@ -13,8 +13,6 @@ import pandas as pd
 # from PyInquirer import prompt
 from ydata_profiling import ProfileReport
 
-from openbq import __version__ as version
-
 
 ## Helper functions
 def convert_ram(bytes):
@@ -656,3 +654,14 @@ def iter_matching_files(
 def reconstruct_filepath(output_dict, prefix):
     output_dict["file"] = prefix + output_dict["file"]
     return output_dict
+
+
+## TODO: Redirect to underlying engines for version info.
+def get_info() -> dict:
+    return {
+        "obqe": "v1.6.5 (557b77b)",
+        "ofiq": "v1.2.0 (d9beef8)",
+        "nfiq2": "v2.3.0 (76b8c4e)",
+        "biqt": "v23.04 (84485d5)",
+        "nisqa": "latest (fe84f0f)",
+    }
