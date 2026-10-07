@@ -13,8 +13,6 @@ import pandas as pd
 # from PyInquirer import prompt
 from ydata_profiling import ProfileReport
 
-from openbq import __version__ as version
-
 
 ## Helper functions
 def convert_ram(bytes):
@@ -658,7 +656,7 @@ def reconstruct_filepath(output_dict, prefix):
     return output_dict
 
 
-## TODO: Redirect to underlying engines for version info
+## TODO: Redirect to underlying engines for version info.
 def get_info() -> dict:
     return {
         "obqe": "v1.6.5 (557b77b)",
