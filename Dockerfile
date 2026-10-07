@@ -19,7 +19,7 @@ RUN echo "Building target ${TARGETARCH} on $(uname -m) platform."; \
     fi; \
     chmod +x cmake*.sh; mkdir /opt/cmake; ./cmake*.sh --prefix=/opt/cmake --skip-license; ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake;
 
-RUN cd /app; git clone --verbose https://github.com/mitre/biqt --depth=1 --branch master biqt-pub; \
+RUN cd /app; git clone --verbose https://github.com/mitre/biqt --branch master biqt-pub; \
     export NUM_CORES=$(cat /proc/cpuinfo | grep -Pc "processor\s*:\s*[0-9]+\s*$"); \
     echo "Builds will use ${NUM_CORES} core(s)."; \
     cd /app/biqt-pub; \
@@ -28,13 +28,13 @@ RUN cd /app; git clone --verbose https://github.com/mitre/biqt --depth=1 --branc
     make -j${NUM_CORES}; make install; \
     source /etc/profile.d/biqt.sh;
 
-RUN cd /app; git clone https://github.com/mitre/biqt-iris.git --depth=1; \
+RUN cd /app; git clone https://github.com/mitre/biqt-iris.git; \
     cd /app/biqt-iris; \
     git checkout c618e73e727eb9e831ebb02d2ebb4afd34a06470; \
     mkdir build; cd build; cmake -DBIQT_HOME=/usr/local/share/biqt -DCMAKE_BUILD_TYPE=Release ..; \
     make -j${NUM_CORES}; make install;
 
-RUN cd /app; git clone https://github.com/biometrics/openbr.git openbr --depth=1 || exit 5; \
+RUN cd /app; git clone https://github.com/biometrics/openbr.git openbr || exit 5; \
     cd /app/openbr; \
     git checkout 1e1c8f; \
     mkdir build; cd build; \
@@ -42,13 +42,13 @@ RUN cd /app; git clone https://github.com/biometrics/openbr.git openbr --depth=1
     export NUM_CORES=$(cat /proc/cpuinfo | grep -Pc "processor\s*:\s*[0-9]+\s*$"); \
     make -j${NUM_CORES}; make install;
 
-RUN cd /app; git clone https://github.com/mitre/biqt-face.git biqt-face --depth=1 --branch master; \
+RUN cd /app; git clone https://github.com/mitre/biqt-face.git biqt-face --branch master; \
     cd /app/biqt-face; \
     git checkout 0ea2e42ddce72d940999cc90299c383d34bbffe9; \
     mkdir build; cd build; cmake -DCMAKE_BUILD_TYPE=Release -DOPENBR_DIR=/opt/openbr -DBIQT_HOME=/usr/local/share/biqt ..; \
     make -j${NUM_CORES}; make install;
 
-RUN cd /app; git clone --recursive https://github.com/usnistgov/NFIQ2.git --depth=1; \
+RUN cd /app; git clone --recursive https://github.com/usnistgov/NFIQ2.git; \
     cd NFIQ2; \
     git checkout 76b8c4e0b0541f3deab832b1a496e524edc0b5b6; \
     mkdir build; cd build; \
@@ -56,7 +56,7 @@ RUN cd /app; git clone --recursive https://github.com/usnistgov/NFIQ2.git --dept
 
 RUN set -e && apt install -y --no-install-recommends python3-pip liblapack-dev; \
     pip install conan==2.18.1 cmake==3.26; \
-    cd /app; mkdir ofiq; cd ofiq; git clone https://github.com/BSI-OFIQ/OFIQ-Project.git --depth=1; \
+    cd /app; mkdir ofiq; cd ofiq; git clone https://github.com/BSI-OFIQ/OFIQ-Project.git; \
     cd OFIQ-Project; \
     git checkout d9beef8220c3829661d11e2aa3a96aef9a94a5f3; \
     cd scripts; chmod +x *.sh; \
