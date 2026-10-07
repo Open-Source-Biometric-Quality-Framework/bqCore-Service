@@ -14,6 +14,7 @@ from openbq.app import filter as filter_job
 from openbq.app import preprocess as preprocess_job
 from openbq.app import report as report_job
 from openbq.app import run as assessment_job
+from openbq.utils import get_info
 
 # from openbq.utils import menu
 
@@ -37,7 +38,7 @@ PROC_TYPE = [
 ]
 
 
-@click.command(epilog="Visit https://openbq.github.io for more details")
+@click.command(epilog="Visit https://docs.openbq.io for more details")
 @click.option(
     "--mode",
     "-M",
@@ -167,6 +168,12 @@ PROC_TYPE = [
     default=False,
     help="Enable debugging mode (print out runtime logs).",
 )
+@click.option(
+    "--info",
+    is_flag=True,
+    default=False,
+    help="Retrieve assessment engine info.",
+)
 def main(
     input,
     output,
@@ -190,6 +197,7 @@ def main(
     engine,
     config,
     debug,
+    info,
 ):
     console = Console()
     console.print("")
@@ -199,6 +207,10 @@ def main(
     )
     console.print(Panel.fit(f"Version: {version}, Build: {build}"))
     console.print("")
+
+    if info:
+        console.print(get_info())
+        return
 
     if query and columns:
         if not len([True for col in columns.split(",") if col in query]):
