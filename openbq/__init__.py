@@ -1,3 +1,3 @@
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __name__ = "Open Biometric Quality Framework (OpenBQ)"
-__build__ = "07102026"
+__build__ = "08102026"
