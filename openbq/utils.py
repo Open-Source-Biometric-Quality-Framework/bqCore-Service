@@ -662,6 +662,6 @@ def get_info() -> dict:
         "obqe": "v1.6.5 (557b77b)",
         "ofiq": "v1.2.0 (d9beef8)",
         "nfiq2": "v2.3.0 (76b8c4e)",
-        "biqt": "v23.04 (84485d5)",
+        "biqt": "v26.04 (84485d5)",
         "nisqa": "latest (fe84f0f)",
     }
