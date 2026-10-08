@@ -48,9 +48,10 @@ RUN cd /app; git clone https://github.com/mitre/biqt-face.git biqt-face --branch
     mkdir build; cd build; cmake -DCMAKE_BUILD_TYPE=Release -DOPENBR_DIR=/opt/openbr -DBIQT_HOME=/usr/local/share/biqt ..; \
     make -j${NUM_CORES}; make install;
 
-RUN cd /app; git clone --recursive https://github.com/usnistgov/NFIQ2.git; \
+RUN cd /app; git clone https://github.com/usnistgov/NFIQ2.git; \
     cd NFIQ2; \
     git checkout 76b8c4e0b0541f3deab832b1a496e524edc0b5b6; \
+    git submodule update --init --recursive; \
     mkdir build; cd build; \
     cmake .. -DCMAKE_CONFIGURATION_TYPES=Release; cmake --build . --config Release; cmake --install .
 
